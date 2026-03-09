@@ -1,0 +1,275 @@
+/* ===================== NAVBAR ANIMATIONS ===================== */
+.navbar a,
+.navbar ul li {
+    opacity: 0;
+    animation: slideRight 1.5s ease-in-out forwards;
+    animation-delay: calc(0.2s * var(--i));
+    text-decoration: none;
+}
+
+@keyframes slideRight {
+    0% {
+        opacity: 0;
+        transform: translateX(-100px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+
+/* ===================== HERO IMAGE ANIMATION ===================== */
+.hero-image-animation {
+    opacity: 0;
+    animation: zoomBounce 2s ease-in-out forwards;
+    animation-delay: 1s;
+}
+
+@keyframes zoomBounce {
+    0% {
+        opacity: 0;
+        transform: scale(0.5) rotate(-40deg);
+    }
+
+    50% {
+        transform: scale(1.1) rotate(0);
+    }
+
+    100% {
+        opacity: 1;
+        transform: scale(1) rotate(0);
+    }
+}
+
+
+/* ===================== HERO CONTENT ANIMATION ===================== */
+.hero-content-animation>* {
+    opacity: 0;
+    animation: fadeInUp 1s ease-in-out forwards;
+    animation-delay: calc(0.4s * var(--i));
+}
+
+@keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+/* ===================== SCROLL-TRIGGERED ANIMATIONS ===================== */
+/* Base hidden state for scroll-animated elements */
+.scroll-hidden {
+    opacity: 0;
+    transform: translateY(60px);
+    transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+}
+
+.scroll-hidden.scroll-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Staggered children */
+.stagger-children>* {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.stagger-children.scroll-visible>*:nth-child(1) {
+    transition-delay: 0.1s;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.stagger-children.scroll-visible>*:nth-child(2) {
+    transition-delay: 0.2s;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.stagger-children.scroll-visible>*:nth-child(3) {
+    transition-delay: 0.3s;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.stagger-children.scroll-visible>*:nth-child(4) {
+    transition-delay: 0.4s;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.stagger-children.scroll-visible>*:nth-child(5) {
+    transition-delay: 0.5s;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.stagger-children.scroll-visible>*:nth-child(6) {
+    transition-delay: 0.6s;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Slide from left */
+.slide-left-hidden {
+    opacity: 0;
+    transform: translateX(-80px);
+    transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+}
+
+.slide-left-hidden.scroll-visible {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* Slide from right */
+.slide-right-hidden {
+    opacity: 0;
+    transform: translateX(80px);
+    transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+}
+
+.slide-right-hidden.scroll-visible {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* Scale in */
+.scale-hidden {
+    opacity: 0;
+    transform: scale(0.8);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.scale-hidden.scroll-visible {
+    opacity: 1;
+    transform: scale(1);
+}
+
+
+/* ===================== FLOATING ANIMATION (hero image) ===================== */
+@keyframes float {
+
+    0%,
+    100% {
+        transform: translateY(0px);
+    }
+
+    50% {
+        transform: translateY(-15px);
+    }
+}
+
+.hero-image img {
+    animation: float 4s ease-in-out infinite;
+    animation-delay: 3s;
+}
+
+/* ===================== GLOW PULSE ===================== */
+@keyframes glowPulse {
+
+    0%,
+    100% {
+        box-shadow: 0 0 20px rgba(15, 187, 255, 0.3);
+    }
+
+    50% {
+        box-shadow: 0 0 40px rgba(15, 187, 255, 0.7), 0 0 60px rgba(15, 187, 255, 0.3);
+    }
+}
+
+.about-image img {
+    animation: glowPulse 3s ease-in-out infinite;
+}
+
+/* ===================== SECTION TITLE UNDERLINE ANIMATION ===================== */
+.section-title::after {
+    content: '';
+    display: block;
+    width: 0;
+    height: 4px;
+    background: linear-gradient(to right, var(--global-clr), var(--btn-clr));
+    border-radius: 2px;
+    margin: 0.8rem auto 0;
+    transition: width 1s ease-out;
+}
+
+.section-title.scroll-visible::after {
+    width: 80px;
+}
+
+/* ===================== SKILL TAG HOVER WAVE ===================== */
+@keyframes tagWave {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.08);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+.skill-tag:hover {
+    animation: tagWave 0.4s ease;
+}
+
+/* ===================== TYPING CURSOR ===================== */
+.typed-cursor {
+    color: var(--global-clr);
+    font-size: 2rem;
+}
+
+/* ===================== BACKGROUND PARTICLES ===================== */
+.bg-particles {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+.bg-particles span {
+    position: absolute;
+    bottom: -20px;
+    left: var(--left);
+    width: var(--size);
+    height: var(--size);
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(15, 187, 255, 0.55), rgba(15, 187, 255, 0.05));
+    box-shadow: 0 0 8px rgba(15, 187, 255, 0.3);
+    animation: particleRise var(--dur) ease-in var(--delay) infinite;
+    will-change: transform, opacity;
+}
+
+@keyframes particleRise {
+    0% {
+        transform: translateY(0) scale(1);
+        opacity: 0;
+    }
+    10% {
+        opacity: 0.7;
+    }
+    90% {
+        opacity: 0.3;
+    }
+    100% {
+        transform: translateY(-105vh) scale(0.6);
+        opacity: 0;
+    }
+}
+
+
